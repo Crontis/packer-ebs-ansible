@@ -9,7 +9,7 @@ An example usage for the session manager would be to prevent disconnects when ch
 
     docker run -it \
         --mount type=bind,source=$(pwd),target=/build \
-        image "packer build /build/template.json"
+        crontis/packer-ebs-ansible:latest "packer build /build/template.json"
 
 Please note, that you need to provide your aws credentials somehow. You can set them via your CI or provide them directly to docker:
 
@@ -17,7 +17,7 @@ Please note, that you need to provide your aws credentials somehow. You can set 
         --mount type=bind,source=$(pwd),target=/build \
         -e AWS_ACCESS_KEY_ID="KEY" \
         -e AWS_SECRET_ACCESS_KEY="SECRET" \
-        deplo:latest "packer build /build/template.json"
+        crontis/packer-ebs-ansible:latest "packer build /build/template.json"
 
 ## Packer example with centos8 ami
 
