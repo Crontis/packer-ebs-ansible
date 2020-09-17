@@ -1,5 +1,7 @@
 # Dockerimage for packer
 
+[Docker Hub](https://hub.docker.com/r/crontis/packer-ebs-ansible)
+
 This image is used to run packer with an amazon-ebs builder and ansible-provisioner.
 It also comes with the aws session manager plugin installed, to utilize packers session_manager connector.
 
