@@ -7,6 +7,8 @@ An example usage for the session manager would be to prevent disconnects when ch
 
 ## Usage
 
+Please note, that amazons ssm agent has to be preinstalled on your source ami!
+
     docker run -it \
         --mount type=bind,source=$(pwd),target=/build \
         crontis/packer-ebs-ansible:latest "packer build /build/template.json"
@@ -19,7 +21,8 @@ Please note, that you need to provide your aws credentials somehow. You can set 
         -e AWS_SECRET_ACCESS_KEY="SECRET" \
         crontis/packer-ebs-ansible:latest "packer build /build/template.json"
 
-## Packer example with centos8 ami
+## Packer example usage with session_manager
+The ami has to be replace with an ami that has the ssm agent installed.
 
     {
         "variables": {
@@ -33,7 +36,7 @@ Please note, that you need to provide your aws credentials somehow. You can set 
                 "access_key": "{{user `aws_access_key`}}",
                 "secret_key": "{{user `aws_secret_key`}}",
                 "associate_public_ip_address": true,
-                "source_ami": "ami-032025b3afcbb6b34",
+                "source_ami": "ami_with_ssm_agent",
                 "instance_type": "t2.micro",
                 "ssh_interface": "session_manager",
                 "ssh_username": "centos",
